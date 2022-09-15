@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+    x:Class="CityApp.Modules.Menu.MenuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cITranform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:pages="clr-namespace:CityApp.Core.Pages;assembly=CityApp"
+    Title="Master">
+    <pages:BasePage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryAppColor}" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </pages:BasePage.Resources>
+    <StackLayout>
+        <ListView
+            HasUnevenRows="true"
+            ItemsSource="{Binding MenuItems}"
+            SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
+            SeparatorVisibility="None">
+            <ListView.Header>
+                <Grid Padding="10" BackgroundColor="{StaticResource SecondaryBackgroudColor}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="90" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <forms:CachedImage
+                        Aspect="AspectFill"
+                        CacheDuration="{StaticResource ProfileIconCacheDuration}"
+                        CacheType="Disk"
+                        ErrorPlaceholder="profile_icon_placeholder"
+                        HeightRequest="90"
+                        HorizontalOptions="CenterAndExpand"
+                        LoadingPlaceholder="profile_icon_placeholder"
+                        Source="{Binding ProfileImage}"
+                        WidthRequest="90">
+                        <forms:CachedImage.Transformations>
+                            <cITranform:CircleTransformation />
+                        </forms:CachedImage.Transformations>
+                    </forms:CachedImage>
+                    <Label Grid.Row="1" Text="{Binding UserName}" />
+                    <Label Grid.Row="2" Text="{Binding AssociatedCity}" />
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Image
+                                Margin="20,5"
+                                Aspect="AspectFill"
+                                HeightRequest="35"
+                                Source="{Binding Icon}"
+                                WidthRequest="35" />
+                            <Label
+                                FontSize="18"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding Title}"
+                                TextColor="Black"
+                                VerticalOptions="FillAndExpand"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</pages:BasePage>

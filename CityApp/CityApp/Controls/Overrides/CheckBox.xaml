@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="CityApp.Controls.Overrides.CheckBox"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Name="RootItem">
+    <ContentView.Content>
+        <Frame
+            Padding="2,2,2,2"
+            BackgroundColor="Transparent"
+            HasShadow="False">
+            <StackLayout Orientation="Horizontal">
+                <forms:CachedImage
+                    x:Name="Box"
+                    BackgroundColor="Transparent"
+                    HeightRequest="{Binding ImageHeight, Source={x:Reference RootItem}}"
+                    Source="checkbox_unchecked.png"
+                    WidthRequest="{Binding ImageWidht, Source={x:Reference RootItem}}">
+                    <forms:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" />
+                    </forms:CachedImage.GestureRecognizers>
+                </forms:CachedImage>
+                <Label
+                    FontFamily="{Binding FontFamily, Source={x:Reference RootItem}}"
+                    FontSize="{Binding FontSize, Source={x:Reference RootItem}}"
+                    Text="{Binding Text, Source={x:Reference RootItem}}"
+                    TextColor="{Binding TextColor, Source={x:Reference RootItem}}"
+                    VerticalOptions="Center" />
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,53 @@
+﻿<pages:BasePage
+    x:Class="CityApp.Modules.Account.Register.RegisterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:pages="clr-namespace:CityApp.Core.Pages;assembly=CityApp"
+    xmlns:overrides="clr-namespace:CityApp.Controls.Overrides;assembly=CityApp"
+    xmlns:markupExtensions="clr-namespace:CityApp.Interactions.MarkupExtensions;assembly=CityApp">
+    <Grid>
+        <forms:CachedImage
+            Aspect="AspectFill"
+            HorizontalOptions="FillAndExpand"
+            Source="LoginBackground"
+            VerticalOptions="FillAndExpand" />
+        <StackLayout Padding="20,0" VerticalOptions="Center">
+            <Label
+                Margin="0,0,0,5"
+                Style="{StaticResource AuthorizationTitleLabelStyle}"
+                Text="{markupExtensions:Translate txtRegister}" />
+            <overrides:CustomEntry
+                Margin="0,5,0,5"
+                Placeholder="{markupExtensions:Translate txtUsername}"
+                Style="{StaticResource AuthorizationEntryStyle}"
+                Text="{Binding UserName.Value}" />
+            <overrides:CustomEntry
+                Margin="0,0,0,5"
+                IsPassword="True"
+                Placeholder="{markupExtensions:Translate txtPassword}"
+                Style="{StaticResource AuthorizationEntryStyle}"
+                Text="{Binding Password.Value}" />
+            <overrides:CustomEntry
+                Margin="0,0,0,10"
+                IsPassword="True"
+                Placeholder="{markupExtensions:Translate txtConfirmPassword}"
+                Style="{StaticResource AuthorizationEntryStyle}"
+                Text="{Binding PasswordConfirmation.Value}" />
+            <Button
+                Margin="0,10"
+                Command="{Binding RegisterCommand}"
+                Style="{StaticResource ButtonStyle}"
+                Text="{markupExtensions:Translate txtRegister}" />
+        </StackLayout>
+        <Label
+            Margin="0,0,0,20"
+            Style="{StaticResource AuthorizationBoldLabelStyle}"
+            Text="{markupExtensions:Translate txtAlreadyHaveAnAccount}"
+            VerticalOptions="End">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToLoginPageCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
+    </Grid>
+</pages:BasePage>

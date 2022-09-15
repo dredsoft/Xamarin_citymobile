@@ -1,0 +1,113 @@
+<pages:BasePage
+    x:Class="CityApp.Modules.Violations.ViolationCreateEdit.VirtualViolationCreateEditPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:CityApp.Core.Pages;assembly=CityApp"
+    xmlns:markupExtensions="clr-namespace:CityApp.Interactions.MarkupExtensions;assembly=CityApp"
+    xmlns:enums="clr-namespace:CityApp.Models.Enums;assembly=CityApp"
+    xmlns:views="clr-namespace:CityApp.Shared.Views;assembly=CityApp"
+    xmlns:effects="clr-namespace:CityApp.Interactions.Effects;assembly=CityApp"
+    BackgroundColor="White"
+    ControlTemplate="{StaticResource PageProgressBarTemplate}">
+    <ScrollView Padding="15">
+        <StackLayout>
+
+            <views:LocationSectionView/>
+
+            <Entry Placeholder="{markupExtensions:Translate txtDescription}"
+                   PlaceholderColor="Silver"
+                   Text="{Binding Description}"
+                   Style="{StaticResource KeyboardTextStyle}"/>
+
+            <Grid IsVisible="{Binding DisplayRequiredFields, Converter={StaticResource FlagsToBooleanConverter}, ConverterParameter={x:Static enums:ViolationRequiredFields.VehicleInformation}}" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.ColumnSpan="2"
+                       Grid.Row="0"
+                       Text="{markupExtensions:Translate txtVehicleInfromation}"
+                       FontSize="24"
+                       Margin="0, 4, 0, 4"
+                       Style="{StaticResource CreateEditLabelStyle}"/>
+
+                <Entry Grid.Column="0" 
+                       Grid.ColumnSpan="2"
+                       Grid.Row="1"
+                       Placeholder="{markupExtensions:Translate txtLicensePlateOrVin}"
+                       PlaceholderColor="Silver"
+                       Text="{Binding LicensePlate.Value}">
+                    <Entry.Effects>
+                        <effects:EntryCapitalizeKeyboard />
+                    </Entry.Effects>
+                </Entry>
+
+                <Label Grid.Column="0"
+                       Grid.Row="2"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       Text="{markupExtensions:Translate txtSelectState}"
+                       FontSize="18"
+                       Style="{StaticResource CreateEditLabelStyle}"/>
+                <Picker Grid.Column="1"
+                        Grid.Row="2"
+                        SelectedItem="{Binding SelectedState}"
+                        SelectedIndex="{Binding SelectedStateIndex}"
+                        ItemsSource="{Binding LicenseStates}"/>
+
+                <Picker Grid.Column="0"
+                       Grid.Row="3" 
+                        SelectedItem="{Binding SelectedVehicleMake}"
+                        SelectedIndex="{Binding SelectedMakeIndex}"
+                        ItemsSource="{Binding VehicleMakes}"/>
+
+                <Entry Grid.Column="1"
+                       Grid.Row="3"
+                       Placeholder="{markupExtensions:Translate txtModel}"
+                       PlaceholderColor="Silver"
+                       Text="{Binding VehicleModel}"
+                       Style="{StaticResource KeyboardTextStyle}"/>
+                <Entry Grid.Column="0"
+                       Grid.Row="4" 
+                       Placeholder="{markupExtensions:Translate txtColor}"
+                       PlaceholderColor="Silver"
+                       Text="{Binding VehicleColor}"
+                       Style="{StaticResource KeyboardTextStyle}"/>
+                <Entry Grid.Column="1"
+                       Grid.Row="4" 
+                       Placeholder="{markupExtensions:Translate txtType}"
+                       PlaceholderColor="Silver"
+                       Text="{Binding VehicleType}"
+                       Style="{StaticResource KeyboardTextStyle}"/>
+            </Grid>
+
+            <Grid IsVisible="{Binding DisplayRequiredFields, Converter={StaticResource FlagsToBooleanConverter}, ConverterParameter={x:Static enums:ViolationRequiredFields.Video}}" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="{markupExtensions:Translate txtVideo}"
+                       Style="{StaticResource CreateEditLabelStyle}"
+                       Margin="0, 4, 0, 4"
+                       FontSize="24"/>
+
+                <views:ThumbnailView Grid.Row="1"/>
+
+            </Grid>
+
+            <Button Text="{markupExtensions:Translate txtSend}"           
+                    Command="{Binding SendViolationCommand}"
+                    VerticalOptions="EndAndExpand"
+                    Style="{StaticResource BigBlueRoundedButtonStyle}"/>  
+        </StackLayout>
+    </ScrollView>
+</pages:BasePage>

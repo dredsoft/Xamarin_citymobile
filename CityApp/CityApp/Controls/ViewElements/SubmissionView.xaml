@@ -1,0 +1,72 @@
+﻿<ContentView
+    x:Class="CityApp.Controls.ViewElements.SubmissionView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:resources="clr-namespace:CityApp.Resources;assembly=CityApp"
+    xmlns:markupExtensions="clr-namespace:CityApp.Interactions.MarkupExtensions;assembly=CityApp"
+    x:Name="Root">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Bold.ttf" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <AbsoluteLayout Padding="8"
+                    HeightRequest="220"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="220">
+
+        <forms:CachedImage
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            Aspect="AspectFill"
+            CacheDuration="{StaticResource SubmissionThumbCacheDuration}"
+            CacheType="All"
+            Source="{Binding Thumbnail, Source={x:Reference Root}}">
+            <forms:CachedImage.Transformations>
+                <transformations:CornersTransformation
+                    BottomLeftCornerSize="10"
+                    BottomRightCornerSize="10"
+                    CornersTransformType="AllRounded"
+                    TopLeftCornerSize="10"
+                    TopRightCornerSize="10" />
+            </forms:CachedImage.Transformations>
+        </forms:CachedImage>
+
+        <Image AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+               AbsoluteLayout.LayoutFlags="PositionProportional"
+               Style="{StaticResource PlayVideoImageStyle}" />
+
+        <StackLayout Padding="0,8,8,0"
+            Spacing="4"
+            AbsoluteLayout.LayoutBounds="1,0,1,-1"
+            AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+            HorizontalOptions="EndAndExpand"
+            Orientation="Horizontal">
+
+            <Image BackgroundColor="Transparent"
+                    HeightRequest="30"
+                    Source="{x:Static resources:Images.LocationWhite}"
+                    WidthRequest="30" />
+
+            <Label LineBreakMode="TailTruncation"
+                   Text="{Binding Location, Source={x:Reference Root}}"
+                   VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Padding="8,0,0,8"
+                     AbsoluteLayout.LayoutBounds="0,1,1,-1"
+                     AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+
+            <Label Text="{markupExtensions:Translate txtStatus}" />
+
+            <Label Text="{Binding Status, Source={x:Reference Root}}" />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentView>

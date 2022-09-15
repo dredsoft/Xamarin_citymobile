@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+    x:Class="CityApp.Modules.Violations.Categories.CategoriesListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewElements="clr-namespace:CityApp.Controls.ViewElements;assembly=CityApp"
+    xmlns:pages="clr-namespace:CityApp.Core.Pages;assembly=CityApp"
+    xmlns:behaviors="clr-namespace:CityApp.Interactions.Behaviors;assembly=CityApp"
+    xmlns:cells="clr-namespace:CityApp.Controls.Overrides.Cells;assembly=CityApp"
+    BackgroundColor="{StaticResource PrimaryBackgroundColor}"
+    x:Name="Root">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <viewElements:UserLocationView />
+        <SearchBar Grid.Row="1" Text="{Binding SearchText, Mode=OneWayToSource}">
+            <SearchBar.Behaviors>
+                <behaviors:EventToCommandBehavior
+                    Command="{Binding FilterCommand}"
+                    CommandParameter="{Binding SearchText}"
+                    EventName="TextChanged" />
+            </SearchBar.Behaviors>
+        </SearchBar>
+        <ListView
+            Grid.Row="2"
+            Style="{StaticResource CommonListStyle}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <cells:CustomTextCell
+                        Command="{Binding BindingContext.SelectItemCommand, Source={x:Reference Root}}"
+                        CommandParameter="{Binding .}">
+                        <StackLayout Padding="{StaticResource AroundCanvasThickness}">
+                            <Label Style="{StaticResource CustomTextCellLabelStyle}" Text="{Binding Name}" />
+                        </StackLayout>
+                    </cells:CustomTextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</pages:BasePage>

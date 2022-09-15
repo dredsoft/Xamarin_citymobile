@@ -1,0 +1,96 @@
+﻿<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:pages="clr-namespace:CityApp.Core.Pages;assembly=CityApp"
+                xmlns:viewElements="clr-namespace:CityApp.Controls.ViewElements;assembly=CityApp"
+                xmlns:markupExtensions="clr-namespace:CityApp.Interactions.MarkupExtensions;assembly=CityApp"
+                xmlns:overrides="clr-namespace:CityApp.Controls.Overrides;assembly=CityApp"
+                xmlns:views="clr-namespace:CityApp.Modules.Home.SubmissionHistory.Views;assembly=CityApp"
+                xmlns:cells="clr-namespace:CityApp.Controls.Overrides.Cells;assembly=CityApp"
+                x:Class="CityApp.Modules.Home.SubmissionHistory.SubmissionHistoryListPage"
+                BackgroundColor="#fdfdfd"
+                x:Name="Root">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <viewElements:UserLocationView />
+
+        <overrides:PageableListView
+            Grid.Row="1"
+            Style="{StaticResource PageableListStyle}"
+            ItemClickDisable="True"
+            VerticalOptions="FillAndExpand">
+            <overrides:PageableListView.EmptyListViewDataTemplate>
+                <DataTemplate>
+                    <Label Text="No items yet" />
+                </DataTemplate>
+            </overrides:PageableListView.EmptyListViewDataTemplate>
+            <overrides:PageableListView.ItemTemplate>
+                <DataTemplate>
+                    <cells:ExpandableCell x:Name="ExpandableCell">
+                        <Frame BorderColor="Gray"
+                               HasShadow="True"
+                               CornerRadius="5"
+                               Margin="{StaticResource AroundCanvasThickness}"
+                               Padding="0"
+                               BackgroundColor="{StaticResource PrimaryBackgroundColor}"
+                               VerticalOptions="FillAndExpand">
+                            <Grid RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <viewElements:SubmissionView Location="{Binding LocationDescription}"
+                                                             Thumbnail="{Binding Thumbnail, Converter={StaticResource SubmissionThubnailConverter}}"
+                                                             Status="{Binding Status}">
+                                    <viewElements:SubmissionView.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding BindingContext.SelectItemCommand, Source={x:Reference Root}}"
+                                            CommandParameter="{Binding .}" />
+                                    </viewElements:SubmissionView.GestureRecognizers>
+                                </viewElements:SubmissionView>
+
+                                <StackLayout Grid.Row="1"
+                                             Padding="{StaticResource AroundCanvasThickness}">
+
+                                    <Label Text="{markupExtensions:Translate txtViolationTitle}"
+                                           IsVisible="{Binding ViolationName, Converter={StaticResource StringToBooleanConverter}}"
+                                           Style="{StaticResource SubmissionHistoryTitleLabelStyle}" />
+                                    <Label Text="{Binding ViolationName}"
+                                           IsVisible="{Binding ViolationName, Converter={StaticResource StringToBooleanConverter}}"
+                                           Style="{StaticResource SubmissionHistoryLabelStyle}" />
+
+                                    <Label Text="{markupExtensions:Translate txtCitationNumber}"
+                                        IsVisible="{Binding CitationNumber, Converter={StaticResource StringToBooleanConverter}}"
+                                        Style="{StaticResource SubmissionHistoryTitleLabelStyle}" />
+                                    <Label Text="{Binding CitationNumber}"
+                                        IsVisible="{Binding CitationNumber, Converter={StaticResource StringToBooleanConverter}}"
+                                        Style="{StaticResource SubmissionHistoryLabelStyle}" />
+
+                                    <Label Text="{markupExtensions:Translate txtLocationDescription}"
+                                        IsVisible="{Binding LocationDescription, Converter={StaticResource StringToBooleanConverter}}"
+                                        Style="{StaticResource SubmissionHistoryTitleLabelStyle}" />
+                                    <Label Text="{Binding LocationDescription}"
+                                           IsVisible="{Binding LocationDescription, Converter={StaticResource StringToBooleanConverter}}"
+                                           Style="{StaticResource SubmissionHistoryLabelStyle}" />
+
+                                    <Label Text="{markupExtensions:Translate txtDescription}"
+                                           IsVisible="{Binding Description, Converter={StaticResource StringToBooleanConverter}}"
+                                           Style="{StaticResource SubmissionHistoryTitleLabelStyle}" />
+                                    <Label Text="{Binding Description}"
+                                           IsVisible="{Binding Description, Converter={StaticResource StringToBooleanConverter}}"
+                                           Style="{StaticResource SubmissionHistoryLabelStyle}" />
+
+                                    <views:VehicleInfromationView IsMoreDetails="{Binding IsExpanded, Source={x:Reference ExpandableCell}}" />
+                                </StackLayout>
+                            </Grid>
+
+                        </Frame>
+                    </cells:ExpandableCell>
+                </DataTemplate>
+            </overrides:PageableListView.ItemTemplate>
+        </overrides:PageableListView>
+    </Grid>
+</pages:BasePage>

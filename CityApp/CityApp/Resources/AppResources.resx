@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="msgCanNotSetPin" xml:space="preserve">
+    <value>You can't set the pin more than 250 feet from your current location</value>
+  </data>
+  <data name="msgEmptyPassword" xml:space="preserve">
+    <value>Password is required.</value>
+  </data>
+  <data name="msgEmptyStringError" xml:space="preserve">
+    <value>This value cannot be empty</value>
+  </data>
+  <data name="msgEnterEmail" xml:space="preserve">
+    <value>Please enter your email below and we'll reset your password.</value>
+  </data>
+  <data name="msgInvalidEmail" xml:space="preserve">
+    <value>Invalid Email</value>
+  </data>
+  <data name="msgInvalidEmailError" xml:space="preserve">
+    <value>Username should be a valid email address.</value>
+  </data>
+  <data name="msgInvalidPassword" xml:space="preserve">
+    <value>Invalid password</value>
+  </data>
+  <data name="msgInvalidUsername" xml:space="preserve">
+    <value>Invalid username</value>
+  </data>
+  <data name="msgLicensePlateRequired" xml:space="preserve">
+    <value>LicensePlate\Vin is required</value>
+  </data>
+  <data name="msgNoCameraAvailable" xml:space="preserve">
+    <value>:( No camera available</value>
+  </data>
+  <data name="msgNoInternetConnection" xml:space="preserve">
+    <value>No internet connection. Please check your connection and try again.</value>
+  </data>
+  <data name="msgPasswordsShouldMatch" xml:space="preserve">
+    <value>Passwords should match</value>
+  </data>
+  <data name="msgShouldBeEmailAddress" xml:space="preserve">
+    <value>The value should be a valid email address</value>
+  </data>
+  <data name="msgStateRequired" xml:space="preserve">
+    <value>State is required</value>
+  </data>
+  <data name="msgTurnOnLocation" xml:space="preserve">
+    <value>Turn on location</value>
+  </data>
+  <data name="msgVideoRequired" xml:space="preserve">
+    <value>Be sure to capture the license plate, video should not exceed 60 sec</value>
+  </data>
+  <data name="msgViolationsubmitted" xml:space="preserve">
+    <value>Violation has been submitted</value>
+  </data>
+  <data name="txtAddVideo" xml:space="preserve">
+    <value>Add Video</value>
+  </data>
+  <data name="txtAlreadyHaveAnAccount" xml:space="preserve">
+    <value>Already have an account? SIGN IN!</value>
+  </data>
+  <data name="txtAppName" xml:space="preserve">
+    <value>City App</value>
+  </data>
+  <data name="txtCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="txtCitationNumber" xml:space="preserve">
+    <value>Citation Number</value>
+  </data>
+  <data name="txtColor" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="txtConfirmLocation" xml:space="preserve">
+    <value>Confirm Location</value>
+  </data>
+  <data name="txtConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="txtDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="txtDontHaveAnAccount" xml:space="preserve">
+    <value>Don't have an account? SIGN UP!</value>
+  </data>
+  <data name="txtEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="txtEmailAdress" xml:space="preserve">
+    <value>Email Adress</value>
+  </data>
+  <data name="txtForgotPassword" xml:space="preserve">
+    <value>Forgot Password?</value>
+  </data>
+  <data name="txtForgoYourtPassword" xml:space="preserve">
+    <value>Forgot your password</value>
+  </data>
+  <data name="txtHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="txtHttpRequestError" xml:space="preserve">
+    <value>Can't connect to the remote server. Please try again latter.</value>
+  </data>
+  <data name="txtImage" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="txtLatitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="txtLicensePlate" xml:space="preserve">
+    <value>License Plate</value>
+  </data>
+  <data name="txtLicensePlateOrVin" xml:space="preserve">
+    <value>License plate or Vin</value>
+  </data>
+  <data name="txtLocation" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="txtLocationDescription" xml:space="preserve">
+    <value>Location Description</value>
+  </data>
+  <data name="txtLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="txtLogOut" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="txtLongitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="txtMake" xml:space="preserve">
+    <value>Make</value>
+  </data>
+  <data name="txtMessage" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="txtModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="txtMore" xml:space="preserve">
+    <value>more</value>
+  </data>
+  <data name="txtNext" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="txtNoAccounts" xml:space="preserve">
+    <value>No accounts</value>
+  </data>
+  <data name="txtNoSubmisionYet" xml:space="preserve">
+    <value>No submisions yet</value>
+  </data>
+  <data name="txtOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="txtPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="txtRegister" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="txtRememberMe" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="txtResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="txtSelectState" xml:space="preserve">
+    <value>Licence plate state:</value>
+  </data>
+  <data name="txtSend" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="txtStatus" xml:space="preserve">
+    <value>STATUS</value>
+  </data>
+  <data name="txtSubmisionHistory" xml:space="preserve">
+    <value>Submision History</value>
+  </data>
+  <data name="txtType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="txtUsername" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="txtVehicleInfromation" xml:space="preserve">
+    <value>Vehicle Infromation</value>
+  </data>
+  <data name="txtVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="txtViewAll" xml:space="preserve">
+    <value>View All</value>
+  </data>
+  <data name="txtViolationForm" xml:space="preserve">
+    <value>Violation Form</value>
+  </data>
+  <data name="txtViolationTitle" xml:space="preserve">
+    <value>Violation Title</value>
+  </data>
+  <data name="txtWatchVideo" xml:space="preserve">
+    <value>Watch Video</value>
+  </data>
+  <data name="txtYear" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="txtSkip" xml:space="preserve">
+    <value>Skip</value>
+  </data>
+  <data name="txtSelectPrinter" xml:space="preserve">
+    <value>Select a Printer</value>
+  </data>
+  <data name="txtPrintParkingViolation" xml:space="preserve">
+    <value>Print Parking Violation</value>
+  </data>
+  <data name="txtSelect" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="txtDiscoveringPrinters" xml:space="preserve">
+    <value>Discovering printers...</value>
+  </data>
+  <data name="txtDiscoveredPrinters" xml:space="preserve">
+    <value>Discovered Printers</value>
+  </data>
+  <data name="txtPrintersNotFound" xml:space="preserve">
+    <value>Printers not found</value>
+  </data>
+</root>

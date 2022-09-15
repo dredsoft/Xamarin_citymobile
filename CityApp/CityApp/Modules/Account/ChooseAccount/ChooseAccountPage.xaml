@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+    x:Class="CityApp.Modules.Account.ChooseAccount.ChooseAccountPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:pages="clr-namespace:CityApp.Core.Pages;assembly=CityApp"
+    xmlns:cells="clr-namespace:CityApp.Controls.Overrides.Cells;assembly=CityApp"
+    xmlns:markupExtensions="clr-namespace:CityApp.Interactions.MarkupExtensions;assembly=CityApp"
+    x:Name="Root"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.HasNavigationBar="true"
+    BackgroundColor="{StaticResource PrimaryBackgroundColor}">
+    <pages:BasePage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </pages:BasePage.Padding>
+    <Grid>
+        <ListView Style="{StaticResource CommonListStyle}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <cells:CustomTextCell
+                        Command="{Binding BindingContext.SelectItemCommand, Source={x:Reference Root}}"
+                        CommandParameter="{Binding .}">
+                        <StackLayout Padding="{StaticResource AroundCanvasThickness}">
+                            <Label Style="{StaticResource CustomTextCellLabelStyle}" Text="{Binding Name}" />
+                        </StackLayout>
+                    </cells:CustomTextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label Style="{StaticResource EmptyListLabel}"
+               Text="{markupExtensions:Translate txtNoAccounts}"/>
+    </Grid>
+</pages:BasePage>

@@ -1,0 +1,40 @@
+﻿<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:markupExtensions="clr-namespace:CityApp.Interactions.MarkupExtensions;assembly=CityApp"
+             x:Class="CityApp.Shared.Views.LocationSectionView">
+    <Grid RowSpacing="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"
+               Text="{markupExtensions:Translate txtLocation}"
+               FontSize="24"
+               Margin="0, 4, 0, 4"
+               Style="{StaticResource CreateEditLabelStyle}"/>
+
+        <Label Grid.Column="0" Grid.Row="1" 
+               Text="{markupExtensions:Translate txtLatitude}"
+               FontSize="12"
+               Style="{StaticResource CreateEditLabelStyle}"/>
+        <Label Grid.Column="0" Grid.Row="2"
+               FontSize="16"
+               Text="{Binding ViolationPosition.Latitude}"
+               Style="{StaticResource CreateEditLabelStyle}"/>
+
+        <Label Grid.Column="1" Grid.Row="1" 
+               Text="{markupExtensions:Translate txtLongitude}"
+               FontSize="12"
+               Style="{StaticResource CreateEditLabelStyle}"/>
+        <Label Grid.Column="1" Grid.Row="2" 
+               FontSize="16"
+               Text="{Binding ViolationPosition.Longitude}"
+               Style="{StaticResource CreateEditLabelStyle}"/>
+    </Grid>
+</ContentView>

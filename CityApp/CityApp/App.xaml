@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="CityApp.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:CityApp.Interactions.Converters;assembly=CityApp"
+    xmlns:pages="clr-namespace:CityApp.Core.Pages;assembly=CityApp"
+    xmlns:overrides="clr-namespace:CityApp.Controls.Overrides;assembly=CityApp">
+    <Application.Resources>
+        <!--  Application resource dictionary  -->
+        <ResourceDictionary>
+            <x:TimeSpan x:Key="ProfileIconCacheDuration" x:FactoryMethod="FromDays">
+                <x:Arguments>
+                    <x:Double>30</x:Double>
+                </x:Arguments>
+            </x:TimeSpan>
+
+            <x:TimeSpan x:Key="SubmissionThumbCacheDuration" x:FactoryMethod="FromDays">
+                <x:Arguments>
+                    <x:Double>7</x:Double>
+                </x:Arguments>
+            </x:TimeSpan>
+
+            <x:Double x:Key="AccountCellHeight">70</x:Double>
+            <Thickness x:Key="StandartItemDeviation">20,0</Thickness>
+
+            <!--  Converters  -->
+            <converters:SubmissionThubnailToUrlConverter x:Key="SubmissionThubnailConverter" />
+            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+            <converters:FlagsToBooleanConverter x:Key="FlagsToBooleanConverter"/>
+            <converters:StringToBooleanConverter x:Key="StringToBooleanConverter"/>
+            <converters:NullToBooleanConverter x:Key="NullToBooleanConverter" />
+            <converters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <converters:ListEmptyConverter x:Key="ListEmptyConverter" />
+            <converters:DiscoveredPrinterToNameConverter x:Key="DiscoveredPrinterToNameConverter" />
+
+            <!--  Colors  -->
+            <Color x:Key="PrimaryAppColor">#1277B0</Color>
+            <Color x:Key="SecondaryBackgroudColor">#EEEEEE</Color>
+            <Color x:Key="PrimaryBackgroundColor">White</Color>
+
+            <Color x:Key="SelectedItemTextColor">Black</Color>
+            <Color x:Key="PrimaryTextColor">White</Color>
+            <Color x:Key="SecondaryTextColor">Gray</Color>
+            <Color x:Key="DescriptionTextColor">#1277B0</Color>
+
+            <Color x:Key="SubmitViolationButtonColor">#B24444</Color>
+
+            <!--  Styles  -->
+
+            <Style x:Key="CreateEditLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontFamily" Value="Roboto-Regular.ttf" />
+            </Style>
+
+            <Style x:Key="CustomTextCellLabelStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="TextColor" Value="{StaticResource SelectedItemTextColor}" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="FontFamily" Value="Roboto-Bold.ttf" />
+            </Style>
+
+            <Style TargetType="pages:BaseNavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryAppColor}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+
+            <Style TargetType="pages:BasePage">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryBackgroundColor}" />
+            </Style>
+
+            <Style x:Key="AuthorizationTitleLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="#4478b2" />
+                <Setter Property="FontFamily" Value="Roboto-Bold.ttf" />
+            </Style>
+
+            <Style x:Key="AuthorizationLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="FontFamily" Value="Roboto-Regular.ttf" />
+            </Style>
+
+            <Style
+                x:Key="AuthorizationBoldLabelStyle"
+                BasedOn="{StaticResource AuthorizationLabelStyle}"
+                TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="Roboto-Medium.ttf" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="AndroidAuthorizationEntryStyle" TargetType="overrides:CustomEntry">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="UnderlineColor" Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="FontFamily" Value="Roboto-Regular.ttf" />
+            </Style>
+
+            <Style x:Key="IosAuthorizationEntryStyle" TargetType="overrides:CustomEntry">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="FontFamily" Value="Roboto-Regular.ttf" />
+            </Style>
+
+            <OnPlatform x:Key="AuthorizationEntryStyle" x:TypeArguments="Style">
+                <On Platform="Android" Value="{StaticResource AndroidAuthorizationEntryStyle}" />
+                <On Platform="iOS" Value="{StaticResource IosAuthorizationEntryStyle}" />
+            </OnPlatform>
+
+            <Style x:Key="ButtonStyle" TargetType="overrides:CustomEntry">
+                <Setter Property="BackgroundColor" Value="#4478b2" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="FontFamily" Value="Roboto-Medium.ttf" />
+            </Style>
+
+            <Style x:Key="PlayVideoImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Source" Value="circle_play" />
+                <Setter Property="HeightRequest" Value="70" />
+                <Setter Property="WidthRequest" Value="70" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+
+            <Style x:Key="BigRoundedButtonStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="FontFamily" Value="Roboto-Medium.ttf" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+            </Style>
+
+            <Style
+                x:Key="BigBlueRoundedButtonStyle"
+                BasedOn="{StaticResource BigRoundedButtonStyle}"
+                TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryAppColor}" />
+            </Style>
+
+            <Style x:Key="PrinterNameLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="PrinterAddressLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontAttributes" Value="Italic" />
+            </Style>
+
+            <!-- Paddings -->
+            <Thickness x:Key="AroundCanvasThickness">16, 8, 16, 8</Thickness>
+
+            <!--Common Styles-->
+            <Style x:Key="CenteredView" TargetType="View">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="CenteredLabel" TargetType="Label" BasedOn="{StaticResource CenteredView}">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="EmptyListLabel" TargetType="Label" BasedOn="{StaticResource CenteredLabel}">
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="IsVisible" Value="{Binding IsEmptyList}"/>
+                <Setter Property="TextColor" Value="{StaticResource SelectedItemTextColor}" />
+            </Style>
+            
+            <!-- Label Styles-->
+            <Color x:Key="SubmissionHistoryGreyColor">#828282</Color>
+
+            <Style x:Key="SubmissionHistoryCommonLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource SubmissionHistoryGreyColor}" />
+            </Style>
+
+            <Style x:Key="SubmissionHistoryLabelStyle" TargetType="Label" BasedOn="{StaticResource SubmissionHistoryCommonLabelStyle}">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+
+            <Style x:Key="SubmissionHistoryTitleLabelStyle" TargetType="Label" BasedOn="{StaticResource SubmissionHistoryCommonLabelStyle}">
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+            <!--List Styles-->
+            <Style x:Key="CommonListStyle" TargetType="ListView">
+                <Setter Property="ItemsSource" Value="{Binding ItemsList}" />
+                <Setter Property="SeparatorVisibility" Value="Default" />
+                <Setter Property="HasUnevenRows" Value="True" />
+                <Setter Property="IsVisible" Value="{Binding IsNotEmptyList}" />
+                <Setter Property="IsPullToRefreshEnabled" Value="True" />
+                <Setter Property="RefreshCommand" Value="{Binding RefreshCommand}" />
+                <Setter Property="IsRefreshing" Value="{Binding IsRefreshing}"/>
+            </Style>
+
+            <Style x:Key="PageableListStyle" TargetType="overrides:PageableListView">
+                <Setter Property="ItemsSource" Value="{Binding ItemsList}" />
+                <Setter Property="PageIndex" Value="{Binding PageIndex}" />
+                <Setter Property="PageSize" Value="{Binding PageSize}" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="HasUnevenRows" Value="True" />
+                <Setter Property="IsEmptyList" Value="{Binding IsEmptyList}" />
+                <Setter Property="IsPullToRefreshEnabled" Value="True" />
+                <Setter Property="RefreshCommand" Value="{Binding RefreshCommand}" />
+                <Setter Property="LoadMoreCommand" Value="{Binding LoadMoreCommand}" />
+                <Setter Property="IsRefreshing" Value="{Binding IsRefreshing}" />
+                <Setter Property="IsLoadingMore" Value="{Binding IsLoadingMore}" />
+
+            </Style>
+
+
+            <Style x:Key="KeyboardTextStyle" TargetType="Entry">
+                <Setter Property="Keyboard" Value="Text" />
+            </Style>
+
+            <!--  Templates  -->
+            <ControlTemplate x:Key="ContentPageTemplate">
+                <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ContentPresenter AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" />
+                    <ContentView
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        BackgroundColor="{StaticResource SecondaryBackgroudColor}"
+                        BindingContext="{TemplateBinding BindingContext}"
+                        IsVisible="{Binding IsBusy}"
+                        Opacity=".5">
+                        <ActivityIndicator
+                            HeightRequest="60"
+                            HorizontalOptions="CenterAndExpand"
+                            IsRunning="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="60"
+                            Color="{StaticResource PrimaryAppColor}" />
+                    </ContentView>
+                </AbsoluteLayout>
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="PageProgressBarTemplate">
+                <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ContentPresenter AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" />
+                    <ContentView
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        BackgroundColor="Black"
+                        BindingContext="{TemplateBinding BindingContext}"
+                        IsVisible="{Binding IsBusy}"
+                        Opacity=".8">
+                            <StackLayout VerticalOptions="CenterAndExpand"
+                                         HorizontalOptions="FillAndExpand"
+                                         Padding="{StaticResource AroundCanvasThickness}"
+                                         Opacity="1"
+                                         Orientation="Horizontal">
+
+                                <ProgressBar HorizontalOptions="FillAndExpand"
+                                             Progress="{Binding Progress}"/>
+                                <Label Text="{Binding ProgressPercent, StringFormat='{0:0} %'}"
+                                       TextColor="White"
+                                       Opacity="1"
+                                       HorizontalOptions="End"/>
+
+                            </StackLayout>
+                    </ContentView>
+                </AbsoluteLayout>
+            </ControlTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

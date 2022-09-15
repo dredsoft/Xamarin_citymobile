@@ -1,0 +1,69 @@
+﻿<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:markupExtensions="clr-namespace:CityApp.Interactions.MarkupExtensions;assembly=CityApp"
+      x:Class="CityApp.Modules.Home.SubmissionHistory.Views.VehicleInfromationView"
+      IsVisible="{Binding LicensePlate, Converter={StaticResource StringToBooleanConverter}}"
+      x:Name="Root">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Label Text="{markupExtensions:Translate txtMore}"
+           TextColor="{StaticResource DescriptionTextColor}"
+           HorizontalOptions="End"
+           HorizontalTextAlignment="End">
+        <Label.GestureRecognizers>
+            <TapGestureRecognizer Tapped="ShowMoreDetails_OnTapped" />
+        </Label.GestureRecognizers>
+    </Label>
+
+    <StackLayout Grid.Row="1"
+                 IsVisible="{Binding IsMoreDetails, Source={x:Reference Root}}">
+
+        <Label Text="{markupExtensions:Translate txtVehicleInfromation}"
+               Style="{StaticResource SubmissionHistoryCommonLabelStyle}"
+               FontSize="24" />
+
+        <Label Text="{markupExtensions:Translate txtLicensePlate}"
+               Style="{StaticResource SubmissionHistoryTitleLabelStyle}" />
+        <Label Text="{Binding LicensePlate}"
+               Style="{StaticResource SubmissionHistoryLabelStyle}" />
+
+        <Label Text="{markupExtensions:Translate txtSelectState}"
+               IsVisible="{Binding State, Converter={StaticResource StringToBooleanConverter}}"
+               Style="{StaticResource SubmissionHistoryTitleLabelStyle}" />
+        <Label Text="{Binding State}"
+               IsVisible="{Binding State, Converter={StaticResource StringToBooleanConverter}}"
+               Style="{StaticResource SubmissionHistoryLabelStyle}" />
+
+        <Label Text="{markupExtensions:Translate txtMake}"
+               IsVisible="{Binding VehicleMake, Converter={StaticResource StringToBooleanConverter}}"
+               Style="{StaticResource SubmissionHistoryTitleLabelStyle}" />
+        <Label Text="{Binding VehicleMake}"
+               IsVisible="{Binding VehicleMake, Converter={StaticResource StringToBooleanConverter}}"
+               Style="{StaticResource SubmissionHistoryLabelStyle}" />
+
+        <Label Text="{markupExtensions:Translate txtModel}"
+               IsVisible="{Binding VehicleModel, Converter={StaticResource StringToBooleanConverter}}"
+               Style="{StaticResource SubmissionHistoryTitleLabelStyle}" />
+        <Label Text="{Binding VehicleModel}"
+               IsVisible="{Binding VehicleModel, Converter={StaticResource StringToBooleanConverter}}"
+               Style="{StaticResource SubmissionHistoryLabelStyle}" />
+
+        <Label Text="{markupExtensions:Translate txtColor}"
+               IsVisible="{Binding VehicleColor, Converter={StaticResource StringToBooleanConverter}}"
+               Style="{StaticResource SubmissionHistoryTitleLabelStyle}" />
+        <Label Text="{Binding VehicleColor}"
+               IsVisible="{Binding VehicleColor, Converter={StaticResource StringToBooleanConverter}}"
+               Style="{StaticResource SubmissionHistoryLabelStyle}" />
+
+        <Label Text="{markupExtensions:Translate txtType}"
+               IsVisible="{Binding VehicleType, Converter={StaticResource StringToBooleanConverter}}"
+               Style="{StaticResource SubmissionHistoryTitleLabelStyle}" />
+        <Label Text="{Binding VehicleType}"
+               IsVisible="{Binding VehicleType, Converter={StaticResource StringToBooleanConverter}}"
+               Style="{StaticResource SubmissionHistoryLabelStyle}" />
+
+    </StackLayout>
+</Grid>

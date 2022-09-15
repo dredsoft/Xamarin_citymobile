@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+    x:Class="CityApp.Modules.Home.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewElements="clr-namespace:CityApp.Controls.ViewElements;assembly=CityApp"
+    xmlns:pages="clr-namespace:CityApp.Core.Pages;assembly=CityApp"
+    xmlns:overrides="clr-namespace:CityApp.Controls.Overrides;assembly=CityApp"
+    xmlns:markupExtensions="clr-namespace:CityApp.Interactions.MarkupExtensions;assembly=CityApp"
+    BackgroundColor="{StaticResource PrimaryBackgroundColor}"
+    x:Name="Root">
+    <Grid RowSpacing="20">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <Style x:Key="TitleLabelStyle" TargetType="Label">
+                    <Setter Property="TextColor" Value="{StaticResource SelectedItemTextColor}" />
+                    <Setter Property="FontSize" Value="Medium" />
+                    <Setter Property="Margin" Value="20" />
+                    <Setter Property="FontFamily" Value="Roboto-Regular.ttf" />
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <!--  Violation types section  -->
+        <viewElements:UserLocationView />
+        <Label
+            Grid.Row="1"
+            Margin="{StaticResource StandartItemDeviation}"
+            Style="{StaticResource TitleLabelStyle}"
+            Text="VIOLATION TYPE" />
+        <overrides:HorizontalList
+            Grid.Row="2"
+            HorizontalOptions="CenterAndExpand"
+            ItemsSource="{Binding ViolationTypes}"
+            Orientation="Horizontal"
+            VerticalOptions="StartAndExpand">
+            <overrides:HorizontalList.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Image
+                                Aspect="AspectFit"
+                                HorizontalOptions="Center"
+                                Source="{Binding Icon}"
+                                VerticalOptions="StartAndExpand" />
+                            <Label
+                                Grid.Row="1"
+                                FontSize="Small"
+                                HorizontalOptions="Center"
+                                LineBreakMode="WordWrap"
+                                Text="{Binding Name}"
+                                TextColor="{StaticResource PrimaryAppColor}"
+                                VerticalOptions="Start" />
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.GoToCategoriesCommand, Source={x:Reference Root}}" CommandParameter="{Binding}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </overrides:HorizontalList.ItemTemplate>
+        </overrides:HorizontalList>
+        <!--  Submissions section  -->
+        <Label
+            Grid.Row="3"
+            Margin="{StaticResource StandartItemDeviation}"
+            HorizontalOptions="StartAndExpand"
+            Style="{StaticResource TitleLabelStyle}"
+            Text="{Binding SubmissionsTitle}" />
+        <Label
+            Grid.Row="3"
+            Margin="{StaticResource StandartItemDeviation}"
+            HorizontalOptions="End"
+            Style="{StaticResource TitleLabelStyle}"
+            Text="{Binding TotalCount}" />
+        <StackLayout
+            Grid.Row="4"
+            Margin="20"
+            Padding="20"
+            BackgroundColor="{StaticResource PrimaryAppColor}"
+            HorizontalOptions="FillAndExpand"
+            IsVisible="{Binding ShowSubmissionsPlaceholder}"
+            VerticalOptions="StartAndExpand">
+            <StackLayout
+                HorizontalOptions="Center"
+                Orientation="Horizontal"
+                VerticalOptions="Center">
+                <Image
+                    HeightRequest="45"
+                    Source="camera_white"
+                    WidthRequest="45" />
+                <Label
+                    Margin="10,0,0,0"
+                    FontSize="Medium"
+                    LineBreakMode="NoWrap"
+                    Style="{StaticResource TitleLabelStyle}"
+                    Text="SUBMIT VIOLATION"
+                    TextColor="{StaticResource PrimaryTextColor}"
+                    VerticalTextAlignment="Center" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SubmitViolationCommand}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </StackLayout>
+        <overrides:HorizontalList
+            Grid.Row="4"
+            ItemsSource="{Binding SubmisisonList}"
+            IsVisible="{Binding IsNotEmptySubmissionList}"
+            HorizontalOptions="CenterAndExpand"
+            Orientation="Horizontal"
+            VerticalOptions="CenterAndExpand">
+            <overrides:HorizontalList.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <viewElements:SubmissionView
+                            
+                            Location="{Binding LocationDescription}"
+                            Status="{Binding Status}"
+                            Thumbnail="{Binding Thumbnail, Converter={StaticResource SubmissionThubnailConverter}}"/>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding BindingContext.SelectSubmisisonCommand, Source={x:Reference Root}}"
+                                      CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                        
+                    </ViewCell>
+                </DataTemplate>
+            </overrides:HorizontalList.ItemTemplate>
+        </overrides:HorizontalList>
+        <Button
+            Grid.Row="5"
+            Margin="0,0,20,20"
+            CornerRadius="10"
+            Command="{Binding ShowAllSubmissionsCommand}"
+            HorizontalOptions="End"
+            Text="{markupExtensions:Translate txtViewAll}">
+            <Button.BackgroundColor>
+                <OnPlatform x:TypeArguments="Color">
+                    <On Platform="Android" Value="{StaticResource PrimaryAppColor}"/>
+                </OnPlatform>
+            </Button.BackgroundColor>
+            <Button.TextColor>
+                <OnPlatform x:TypeArguments="Color">
+                    <On Platform="Android" Value="{StaticResource PrimaryTextColor}"/>
+                    <On Platform="iOS" Value="{StaticResource PrimaryAppColor}"/>
+                </OnPlatform>
+            </Button.TextColor>
+        </Button>
+    </Grid>
+</pages:BasePage>

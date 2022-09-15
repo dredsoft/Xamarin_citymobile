@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+    x:Class="CityApp.Modules.Account.Accounts.AccountsListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:pages="clr-namespace:CityApp.Core.Pages;assembly=CityApp"
+    xmlns:cells="clr-namespace:CityApp.Controls.Overrides.Cells;assembly=CityApp"
+    xmlns:markupExtensions="clr-namespace:CityApp.Interactions.MarkupExtensions;assembly=CityApp"
+    x:Name="Root"
+    ios:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource PrimaryBackgroundColor}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListView Style="{StaticResource CommonListStyle}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <cells:CustomTextCell
+                        Command="{Binding BindingContext.SelectItemCommand, Source={x:Reference Root}}"
+                        CommandParameter="{Binding .}">
+                        <StackLayout Padding="{StaticResource AroundCanvasThickness}">
+                            <Label Style="{StaticResource CustomTextCellLabelStyle}" Text="{Binding Name}" />
+                        </StackLayout>
+                    </cells:CustomTextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label Grid.Row="0"
+               Style="{StaticResource EmptyListLabel}"
+               Text="{markupExtensions:Translate txtNoAccounts}"/>
+
+        <Button
+            Grid.Row="1"
+            Command="{Binding LogOutCommand}"
+            Margin="{StaticResource AroundCanvasThickness}"
+            Style="{StaticResource BigBlueRoundedButtonStyle}"
+            IsVisible="{Binding IsEmptyList}"
+            Text="{markupExtensions:Translate txtLogOut}"/>
+    </Grid>
+</pages:BasePage>

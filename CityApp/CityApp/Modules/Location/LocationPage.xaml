@@ -1,0 +1,47 @@
+﻿<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:CityApp.Core.Pages;assembly=CityApp"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             xmlns:markupExtensions="clr-namespace:CityApp.Interactions.MarkupExtensions;assembly=CityApp"
+             xmlns:behaviors="clr-namespace:CityApp.Interactions.Behaviors;assembly=CityApp"
+             xmlns:views="clr-namespace:CityApp.Shared.Views;assembly=CityApp"
+             xmlns:resources="clr-namespace:CityApp.Resources"
+             xmlns:overrides="clr-namespace:CityApp.Controls.Overrides;assembly=CityApp"
+             x:Class="CityApp.Modules.Location.LocationPage">
+    <Grid x:Name="GridContainer"
+          RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <views:LocationSectionView Padding="16"/>
+
+        <overrides:CityMap Grid.Row="1"
+                  x:Name="Map"
+                  Circle="{Binding MapCircle}"
+                  MyLocationEnabled="True"
+                  InitialCameraUpdate="{Binding InitialCameraPosition}"
+                  VerticalOptions="FillAndExpand" >
+            <maps:Map.Behaviors>
+                <behaviors:EventToCommandBehavior EventName="CameraMoving"
+                                                  Command="{Binding CameraMovingCommand}"
+                                                  CommandParameter="{Binding .}"/>
+
+            </maps:Map.Behaviors>
+        </overrides:CityMap>
+
+        <Image Grid.Row="1"
+               HeightRequest="32"
+               WidthRequest="32"
+               InputTransparent="True"
+               Style="{StaticResource CenteredView}"
+               Source="{x:Static resources:Images.MapMarker}"/>
+
+        <Button Text="{markupExtensions:Translate txtNext}"
+                Command="{Binding NextCommand}"
+                Grid.Row="2"
+                Margin="{StaticResource AroundCanvasThickness}"
+                Style="{StaticResource BigBlueRoundedButtonStyle}"/>
+    </Grid>
+</pages:BasePage>

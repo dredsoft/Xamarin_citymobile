@@ -1,0 +1,15 @@
+﻿<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CityApp.Shared.Views.ThumbnailView">
+    <Image Grid.Row="0"
+           HeightRequest="220"
+           Aspect="AspectFill"
+           BackgroundColor="{StaticResource SecondaryBackgroudColor}"
+           Source="{Binding VideoThumbnailSource}" />
+    
+    <Image Grid.Row="0" Style="{StaticResource PlayVideoImageStyle}">
+        <Image.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding WatchVideoCommand}" />
+        </Image.GestureRecognizers>
+    </Image>
+</Grid>

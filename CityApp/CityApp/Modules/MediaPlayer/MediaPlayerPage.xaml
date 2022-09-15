@@ -1,0 +1,33 @@
+﻿<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:CityApp.Core.Pages;assembly=CityApp"
+             xmlns:forms="clr-namespace:Plugin.MediaManager.Forms;assembly=Plugin.MediaManager.Forms"
+             x:Class="CityApp.Modules.MediaPlayer.MediaPlayerPage"
+             BackgroundColor="Black">
+
+    <Grid HorizontalOptions="FillAndExpand"
+          ColumnSpacing="0"
+          Padding="0, 0, 0, 16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <forms:VideoView Grid.Row="0"
+                         Source="{Binding VideoSource}" 
+                         AspectMode="AspectFill">
+            <forms:VideoView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding PlayCommand}" />
+            </forms:VideoView.GestureRecognizers>
+        </forms:VideoView>
+        <Image Grid.Row="0"
+               IsVisible="{Binding IsMoviePlaying, Converter={StaticResource InverseBooleanConverter}}"
+               Style="{StaticResource PlayVideoImageStyle}">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding PlayCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+
+        <ProgressBar  Grid.Row="1"
+                      Progress="{Binding Progress}"/>
+    </Grid>
+</pages:BasePage>

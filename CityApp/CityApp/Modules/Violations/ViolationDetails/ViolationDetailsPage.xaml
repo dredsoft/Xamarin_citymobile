@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+    x:Class="CityApp.Modules.Violations.ViolationDetails.ViolationDetailsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewElements="clr-namespace:CityApp.Controls.ViewElements;assembly=CityApp"
+    xmlns:pages="clr-namespace:CityApp.Core.Pages;assembly=CityApp"
+    xmlns:views="clr-namespace:CityApp.Shared.Views;assembly=CityApp">
+    <pages:BasePage.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key="BigRedRoundedButtonStyle"
+                BasedOn="{StaticResource BigRoundedButtonStyle}"
+                TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource SubmitViolationButtonColor}" />
+            </Style>
+        </ResourceDictionary>
+    </pages:BasePage.Resources>
+    <Grid Padding="0,0,0,20" RowSpacing="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <viewElements:UserLocationView />
+
+        <views:ThumbnailView Grid.Row="1"
+                             Padding="16"/>
+
+        <Button
+            Grid.Row="2"
+            Margin="{StaticResource StandartItemDeviation}"
+            Command="{Binding WatchVideoCommand}"
+            Style="{StaticResource BigBlueRoundedButtonStyle}"
+            Text="WATCH EXAMPLE"
+            VerticalOptions="Start" />
+        <Label
+            Grid.Row="3"
+            Margin="{StaticResource StandartItemDeviation}"
+            FontFamily="Roboto-Medium.ttf"
+            FontSize="Medium"
+            HorizontalTextAlignment="Center"
+            Text="{Binding Description}"
+            TextColor="{StaticResource DescriptionTextColor}"
+            VerticalOptions="FillAndExpand"
+            VerticalTextAlignment="Center" />
+        <Button
+            Grid.Row="4"
+            Margin="{StaticResource StandartItemDeviation}"
+            Command="{Binding SubmitViolationCommand}"
+            Style="{StaticResource BigRedRoundedButtonStyle}"
+            Text="SUBMIT A VIOLATION"
+            VerticalOptions="End" />
+    </Grid>
+</pages:BasePage>
